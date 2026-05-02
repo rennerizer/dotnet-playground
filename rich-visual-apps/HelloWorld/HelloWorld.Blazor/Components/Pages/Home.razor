@@ -1,0 +1,22 @@
+﻿@page "/greet"
+
+<h3>Greet</h3>
+
+<input @bind-value="Name" @bind-value:event="oninput" placeholder="Enter you name" />
+
+<button @onclick="ShowGreeting">Greet</button>
+
+@if (!string.IsNullOrEmpty(Greeting))
+{
+    <p>@Greeting</p>
+}
+
+@code {
+    public string? Name { get; set; }
+    public string? Greeting { get; set; }
+
+    private void ShowGreeting()
+    {
+        Greeting = $"Hello, {Name}!";
+    }
+}
