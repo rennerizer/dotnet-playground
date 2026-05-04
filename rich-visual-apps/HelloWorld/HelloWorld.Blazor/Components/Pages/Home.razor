@@ -1,22 +1,24 @@
-﻿@page "/greet"
+﻿@page "/"
 
-<h3>Greet</h3>
+<h3>Simple Division Calculator</h3>
 
-<input @bind-value="Name" @bind-value:event="oninput" placeholder="Enter you name" />
+<input type="number" @bind="Number1" placeholder="Enter first number" />
+/
+<input type="number" @bind="Number2" placeholder="Enter second number" />
 
-<button @onclick="ShowGreeting">Greet</button>
+<button @onclick="Calculate">Calculate</button>
 
-@if (!string.IsNullOrEmpty(Greeting))
-{
-    <p>@Greeting</p>
-}
+<p>@Result</p>
 
 @code {
-    public string? Name { get; set; }
-    public string? Greeting { get; set; }
+    public double Number1 { get; set; }
+    public double Number2 { get; set; }
 
-    private void ShowGreeting()
+    public string Result { get; set; } = string.Empty;
+
+    void Calculate()
     {
-        Greeting = $"Hello, {Name}!";
+        var result = Number1 / Number2;
+        Result = $"The result of dividing {Number1} by {Number2} is: {result}";
     }
 }
